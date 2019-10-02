@@ -47,15 +47,15 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         final Review review = mList.get(i);
-        viewHolder.mName.setText(review.getmReviewName());
-        viewHolder.mCourse.setText(review.getmMovieUrl());
-        viewHolder.mDate.setText(Dater.getYMDString(review.getmPublishDate()));
-        String str = "距离首次学习："+ Dater.getDiscrepantDays(review.getmPublishDate(), new Date())+"天";
-        viewHolder.mDatePoor.setText(str);
+        viewHolder.mName.setText(review.getName());
+        viewHolder.mCourse.setText(review.getMovie());
+        viewHolder.mDate.setText(review.getDate());
+        // String str = "距离首次学习："+ Dater.getDiscrepantDays(Dater.getDateByYMDString(review.getDate()), new Date())+"天";
+        // viewHolder.mDatePoor.setText(str);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WebActivity.actionStart(context, review.getmAticleUrl());
+                WebActivity.actionStart(context, review.getArticle());
             }
         });
     }

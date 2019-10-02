@@ -1,14 +1,13 @@
 package com.fishinwater.fiwentertainmentstar.persistance;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.UUID;
-
-import io.reactivex.annotations.NonNull;
 
 /**
  * 待复习表
@@ -21,54 +20,55 @@ public class Review {
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "id")
-    private String mReviewId;
+    private String mId;
 
     @ColumnInfo(name = "movie")
-    private String mMovieUrl;
+    private String mMovie;
 
     @ColumnInfo(name = "article")
-    private String mAticleUrl;
+    private String mArticle;
 
     @ColumnInfo(name = "name")
-    private String mReviewName;
+    private String mName;
 
     @ColumnInfo(name = "date")
-    private Date mPublishDate;
+    private String mDate;
 
     @Ignore
-    public Review(String mMovieUrl, String mAticleUrl, String mReviewName, Date mPublishDate) {
-        this.mReviewId = UUID.randomUUID().toString();
-        this.mMovieUrl = mMovieUrl;
-        this.mAticleUrl = mAticleUrl;
-        this.mReviewName = mReviewName;
-        this.mPublishDate = mPublishDate;
+    public Review(String mMovie, String mArticle, String mName, String mDate) {
+        this.mId    = UUID.randomUUID().toString();
+        this.mMovie = mMovie;
+        this.mArticle = mArticle;
+        this.mName = mName;
+        this.mDate = mDate;
     }
 
-    public Review(String mReviewId, String mMovieUrl, String mAticleUrl, String mReviewName, Date mPublishDate) {
-        this.mReviewId = mReviewId;
-        this.mMovieUrl = mMovieUrl;
-        this.mAticleUrl = mAticleUrl;
-        this.mReviewName = mReviewName;
-        this.mPublishDate = mPublishDate;
+    public Review(@NonNull String mId, String mMovie, String mArticle, String mName, String mDate) {
+        this.mId = mId;
+        this.mMovie = mMovie;
+        this.mArticle = mArticle;
+        this.mName = mName;
+        this.mDate = mDate;
     }
 
-    public String getmReviewId() {
-        return mReviewId;
+    public String getId() {
+        return mId;
     }
 
-    public String getmMovieUrl() {
-        return mMovieUrl;
+    public String getMovie() {
+        return mMovie;
     }
 
-    public String getmAticleUrl() {
-        return mAticleUrl;
+    public String getArticle() {
+        return mArticle;
     }
 
-    public String getmReviewName() {
-        return mReviewName;
+    public String getName() {
+        return mName;
     }
 
-    public Date getmPublishDate() {
-        return mPublishDate;
+    public String getDate() {
+        return mDate;
     }
+
 }

@@ -1,14 +1,17 @@
 package com.fishinwater.fiwentertainmentstar.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import io.reactivex.annotations.NonNull;
 
 public class Dater {
 
     private static SimpleDateFormat format;
 
-    public static int getDiscrepantDays(Date dateStart, Date dateEnd) {
+    public static int getDiscrepantDays(@NonNull Date dateStart, @NonNull Date dateEnd) {
         return (int) ((dateEnd.getTime() - dateStart.getTime()) / 1000 / 60 / 60 / 24);
     }
 
@@ -22,6 +25,19 @@ public class Dater {
         return format.format(date);
     }
 
+    public static Date getDateByYMDString(String dateString){
+        try
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            return sdf.parse(dateString);
+        }
+        catch (ParseException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     /**
      * 获得当前日期
      */
@@ -31,8 +47,9 @@ public class Dater {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dt);
         int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-        if (w < 0)
+        if (w < 0){
             w = 0;
+        }
         return weekDays[w];
     }
 

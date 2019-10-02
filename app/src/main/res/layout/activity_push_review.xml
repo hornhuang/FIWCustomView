@@ -32,13 +32,22 @@
             android:padding="5dp" />
 
         <EditText
-            android:id="@+id/url"
+            android:id="@+id/movie_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_shape"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:hint="网址" />
+            android:hint="视频网址" />
+
+        <EditText
+            android:id="@+id/article_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_shape"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:hint="文章网址" />
 
         <Button
             android:id="@+id/push"
