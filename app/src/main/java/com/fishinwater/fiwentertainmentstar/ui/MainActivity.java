@@ -1,8 +1,10 @@
-package com.fishinwater.fiwentertainmentstar;
+package com.fishinwater.fiwentertainmentstar.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.fishinwater.fiwentertainmentstar.R;
 
 /**
  * 主活动
