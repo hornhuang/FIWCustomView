@@ -34,7 +34,6 @@ public class WebActivity extends BaseActivity {
 //    ImageView activityFapBack;
     @BindView(R.id.web_view)
     WebView webView;
-    private String FAQ_BASE_URL = "http://www.pcseaz.com/forum.php?mobile=2";
 
     /***
      *
@@ -49,7 +48,7 @@ public class WebActivity extends BaseActivity {
     }
 
     private void init() {
-        webView.loadUrl(FAQ_BASE_URL);
+        webView.loadUrl(getIntent().getStringExtra(URL));
         WebSettings mWebSettings = webView.getSettings();
         mWebSettings.setSupportZoom(true);
         mWebSettings.setLoadWithOverviewMode(true);
@@ -83,15 +82,6 @@ public class WebActivity extends BaseActivity {
     }
 
     /**
-     * 点击事件
-     */
-//    @OnClick(R.id.activity_fap_back)
-//    public void onClick() {
-//        Log.d(TAG, "onClick: ");
-//        jumpToActivity(MainActivity.this,MenuActivity.class);
-//    }
-
-    /**
      * 返回键的监听事件
      *
      * @param keyCode
@@ -100,9 +90,16 @@ public class WebActivity extends BaseActivity {
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
-            webView.goBack();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                if (webView.canGoBack()) {
+                    webView.goBack();
+                    return false;
+                }
+
+            default:
         }
-        return false;
+        return super.onKeyDown(keyCode, event);
     }
+
 }
