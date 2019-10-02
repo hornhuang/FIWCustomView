@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
 import java.util.UUID;
 
 import io.reactivex.annotations.NonNull;
@@ -32,10 +33,10 @@ public class Review {
     private String mReviewName;
 
     @ColumnInfo(name = "date")
-    private String mPublishDate;
+    private Date mPublishDate;
 
     @Ignore
-    public Review(String mMovieUrl, String mAticleUrl, String mReviewName, String mPublishDate) {
+    public Review(String mMovieUrl, String mAticleUrl, String mReviewName, Date mPublishDate) {
         this.mReviewId = UUID.randomUUID().toString();
         this.mMovieUrl = mMovieUrl;
         this.mAticleUrl = mAticleUrl;
@@ -43,7 +44,7 @@ public class Review {
         this.mPublishDate = mPublishDate;
     }
 
-    public Review(String mReviewId, String mMovieUrl, String mAticleUrl, String mReviewName, String mPublishDate) {
+    public Review(String mReviewId, String mMovieUrl, String mAticleUrl, String mReviewName, Date mPublishDate) {
         this.mReviewId = mReviewId;
         this.mMovieUrl = mMovieUrl;
         this.mAticleUrl = mAticleUrl;
@@ -67,7 +68,7 @@ public class Review {
         return mReviewName;
     }
 
-    public String getmPublishDate() {
+    public Date getmPublishDate() {
         return mPublishDate;
     }
 }
