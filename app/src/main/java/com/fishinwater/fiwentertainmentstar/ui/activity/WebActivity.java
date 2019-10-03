@@ -2,6 +2,7 @@ package com.fishinwater.fiwentertainmentstar.ui.activity;
 
 import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
@@ -10,10 +11,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Picture;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
@@ -26,8 +31,10 @@ import android.widget.FrameLayout;
 
 import com.fishinwater.fiwentertainmentstar.R;
 import com.fishinwater.fiwentertainmentstar.ui.activity.base.BaseActivity;
+import com.fishinwater.fiwentertainmentstar.utils.LocalPicture;
 
 import java.lang.reflect.Method;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +58,9 @@ public class WebActivity extends BaseActivity {
 
     @BindView(R.id.flVideoContainer)
     public FrameLayout flVideoContainer;
+
+    @BindView(R.id.constraint_layout)
+    public ConstraintLayout constraintLayout;
 
     @SuppressLint("JavascriptInterface")
     @Override
@@ -175,14 +185,19 @@ public class WebActivity extends BaseActivity {
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            Random random = new Random();
+            int num = random.nextInt(10) % 4;
+            constraintLayout.setBackgroundResource(LocalPicture.girl[num]);
+            mWebView.setVisibility(View.GONE);
             showProgress("正在火速前往");
             super.onPageStarted(view, url, favicon);
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            removeProgress();
             mWebView.setVisibility(View.VISIBLE);
+            removeProgress();
+            constraintLayout.setBackgroundColor(Color.WHITE);
             super.onPageFinished(view, url);
         }
     }
@@ -202,8 +217,27 @@ public class WebActivity extends BaseActivity {
         if (mWebView != null) {
             mWebView.loadUrl(null);
             mWebView.destroy();
+            mWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
+            mWebView.clearHistory();
+
+            ((ViewGroup) mWebView.getParent()).removeView(mWebView);
+            mWebView.destroy();
+            mWebView = null;
         }
         super.onDestroy();
+    }
+
+    /**
+     * 点击返回上一页面而不是退出浏览器
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
+            mWebView.goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     public static void actionStart(Context context, View mClickedView, String url){
