@@ -2,6 +2,8 @@ package com.fishinwater.fiwentertainmentstar.persistance;
 
 import com.fishinwater.fiwentertainmentstar.ReviewDateSource;
 
+import java.util.List;
+
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
@@ -14,7 +16,7 @@ public class LocalReviewDateSource implements ReviewDateSource {
     }
 
     @Override
-    public Flowable<Review> getReviews() {
+    public Flowable<List<Review>> getReviews() {
         return mReviewDao.getReviews();
     }
 

@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import java.util.List;
+
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
@@ -16,7 +18,7 @@ import io.reactivex.Flowable;
 public interface ReviewDao {
 
     @Query("SELECT * FROM reviews")
-    Flowable<Review> getReviews();
+    Flowable<List<Review>> getReviews();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertReview(Review review);

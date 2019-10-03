@@ -132,6 +132,7 @@ public class PushReviewActivity extends AppCompatActivity {
                     public void run() throws Exception {
                         mPushBtn.setEnabled(true);
                         Toast.makeText(PushReviewActivity.this, "提交一条数据", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 }, new Consumer<Throwable>() {
                     @Override

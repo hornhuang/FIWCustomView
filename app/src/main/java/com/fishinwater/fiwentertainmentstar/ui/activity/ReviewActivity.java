@@ -29,6 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Action;
@@ -139,13 +140,14 @@ public class ReviewActivity extends AppCompatActivity {
         mDisposable.add(mViewModel.getReviews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Review>() {
-                    @Override
-                    public void accept(Review review) throws Exception {
-                        mLessonLists.add(review);
-                        adapter.notifyDataSetChanged();
-                    }
-                }));
+                .subscribe(new Consumer<List<Review>>() {
+                               @Override
+                               public void accept(List<Review> reviews) throws Exception {
+                                   mLessonLists.addAll(reviews);
+                                   adapter.notifyDataSetChanged();
+                               }
+                           }
+                ));
         resetPlanLists(mLessonLists);
         if (mRefreshLayout != null) {
             mRefreshLayout.setRefreshing(false);
@@ -168,7 +170,7 @@ public class ReviewActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    private void removeDBPlan(final Review expiredReview){
+    public void removeDBPlan(final Review expiredReview){
         mDisposable.add(mViewModel.deleteReview(expiredReview)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
