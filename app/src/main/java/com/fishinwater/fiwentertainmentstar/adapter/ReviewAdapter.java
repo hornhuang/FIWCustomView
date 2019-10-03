@@ -72,7 +72,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WebActivity.actionStart(context, review.getArticle());
+                WebActivity.actionStart(context, v, review.getArticle());
             }
         });
         viewHolder.itemView.setOnTouchListener(new View.OnTouchListener() {

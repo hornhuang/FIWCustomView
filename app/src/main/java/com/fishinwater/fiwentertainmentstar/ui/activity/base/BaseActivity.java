@@ -89,11 +89,14 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    //-----显示ProgressDialog
+    /**
+     * -----显示ProgressDialog
+     */
     public void showProgress(String message) {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(BaseActivity.this, ProgressDialog.STYLE_SPINNER);
-            progressDialog.setCancelable(false);//设置点击不消失
+            //设置点击不消失
+            progressDialog.setCancelable(false);
         }
         if (progressDialog.isShowing()) {
             progressDialog.setMessage(message);
@@ -102,7 +105,9 @@ public class BaseActivity extends AppCompatActivity {
             progressDialog.show();
         }
     }
-    //------取消ProgressDialog
+    /**
+     * ------取消ProgressDialog
+     */
     public void removeProgress(){
         if (progressDialog==null){
             return;

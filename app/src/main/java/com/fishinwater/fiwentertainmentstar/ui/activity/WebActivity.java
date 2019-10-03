@@ -1,16 +1,20 @@
 package com.fishinwater.fiwentertainmentstar.ui.activity;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
@@ -21,6 +25,7 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 import com.fishinwater.fiwentertainmentstar.R;
+import com.fishinwater.fiwentertainmentstar.ui.activity.base.BaseActivity;
 
 import java.lang.reflect.Method;
 
@@ -33,7 +38,7 @@ import butterknife.ButterKnife;
  *
  * @author fishinwater-1999
  */
-public class WebActivity extends AppCompatActivity {
+public class WebActivity extends BaseActivity {
 
     private final String TAG = WebActivity.class.getName();
 
@@ -51,6 +56,7 @@ public class WebActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_web);
         ButterKnife.bind(this);
 
@@ -146,12 +152,10 @@ public class WebActivity extends AppCompatActivity {
             //该方法在Build.VERSION_CODES.LOLLIPOP以前有效，从Build.VERSION_CODES.LOLLIPOP起，建议使用shouldOverrideUrlLoading(WebView, WebResourceRequest)} instead
             //返回false，意味着请求过程里，不管有多少次的跳转请求（即新的请求地址），均交给webView自己处理，这也是此方法的默认处理
             //返回true，说明你自己想根据url，做新的跳转，比如在判断url符合条件的情况下，我想让webView加载http://ask.csdn.net/questions/178242
-
             if (url.toString().contains("sina.cn")){
                 view.loadUrl(url);
                 return true;
             }
-
             return false;
         }
 
@@ -166,8 +170,20 @@ public class WebActivity extends AppCompatActivity {
                     return true;
                 }
             }
-
             return false;
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            showProgress("正在火速前往");
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            removeProgress();
+            mWebView.setVisibility(View.VISIBLE);
+            super.onPageFinished(view, url);
         }
     }
 
@@ -184,15 +200,16 @@ public class WebActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         if (mWebView != null) {
+            mWebView.loadUrl(null);
             mWebView.destroy();
         }
         super.onDestroy();
     }
 
-    public static void actionStart(Context context, String url){
+    public static void actionStart(Context context, View mClickedView, String url){
         Intent intent = new Intent(context, WebActivity.class);
         intent.putExtra("url", url);
-        context.startActivity(intent);
+        context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation((ReviewActivity)context, mClickedView, "sharedView").toBundle());
     }
 
 }
