@@ -13,24 +13,37 @@
 
         <TextView
             android:id="@+id/menu_item1"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/pop_window_width"
+            android:layout_height="@dimen/pop_window_height"
             android:gravity="center"
             android:textColor="@color/white"
             android:text="@string/delete"/>
 
         <View
-            android:layout_width="60dp"
+            android:layout_width="@dimen/pop_window_width"
             android:layout_height="1dp"
             android:background="@color/grey"/>
 
         <TextView
             android:id="@+id/menu_item2"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/pop_window_width"
+            android:layout_height="@dimen/pop_window_height"
             android:gravity="center"
             android:textColor="@color/white"
             android:text="@string/show_movie"/>
+
+        <View
+            android:layout_width="@dimen/pop_window_width"
+            android:layout_height="1dp"
+            android:background="@color/grey"/>
+
+        <TextView
+            android:id="@+id/menu_item3"
+            android:layout_width="@dimen/pop_window_width"
+            android:layout_height="@dimen/pop_window_height"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="@string/change_ifo"/>
 
     </LinearLayout>
 

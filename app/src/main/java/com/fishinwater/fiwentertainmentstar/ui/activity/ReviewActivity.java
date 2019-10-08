@@ -114,7 +114,7 @@ public class ReviewActivity extends AppCompatActivity {
         if (mLessonLists == null){
             mLessonLists = new ArrayList<>();
         }
-        adapter = new ReviewAdapter(mLessonLists, this);
+        adapter = new ReviewAdapter(mLessonLists, this, mViewModel);
         recyclerView.setAdapter(adapter);
     }
 
@@ -143,31 +143,27 @@ public class ReviewActivity extends AppCompatActivity {
                 .subscribe(new Consumer<List<Review>>() {
                                @Override
                                public void accept(List<Review> reviews) throws Exception {
-                                   mLessonLists.addAll(reviews);
-                                   adapter.notifyDataSetChanged();
+                                   resetPlanLists(reviews);
                                }
                            }
                 ));
-        resetPlanLists(mLessonLists);
         if (mRefreshLayout != null) {
             mRefreshLayout.setRefreshing(false);
         }
     }
 
     private void resetPlanLists(List<Review> initialLessons){
-        List<Review> resetList = new ArrayList<>();
+        mLessonLists.clear();
         for (Review review : initialLessons){
             int days = Dater.getDiscrepantDays(Dater.getDateByYMDString(review.getDate()), new Date());
             if( days == 0 || days == 1 || days == 2 || days == 4 || days == 5 || days == 15  ){
-                resetList.add(review);
+                mLessonLists.add(review);
+                adapter.notifyDataSetChanged();
             }
             if (days > 15){
                 removeDBPlan(review);
             }
         }
-        mLessonLists.clear();
-        mLessonLists.addAll(resetList);
-        adapter.notifyDataSetChanged();
     }
 
     public void removeDBPlan(final Review expiredReview){

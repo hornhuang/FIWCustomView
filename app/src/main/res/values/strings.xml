@@ -3,4 +3,8 @@
 
     <string name="delete">删除</string>
     <string name="show_movie">视频</string>
+    <string name="change_ifo">修改</string>
+
+    <string name="movie">视频</string>
+    <string name="article">文章</string>
 </resources>

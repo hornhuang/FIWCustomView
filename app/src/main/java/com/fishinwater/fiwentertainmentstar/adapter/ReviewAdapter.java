@@ -1,7 +1,6 @@
 package com.fishinwater.fiwentertainmentstar.adapter;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -20,7 +19,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fishinwater.fiwentertainmentstar.R;
+import com.fishinwater.fiwentertainmentstar.dialog.UpdateReviewDialog;
 import com.fishinwater.fiwentertainmentstar.persistance.Review;
+import com.fishinwater.fiwentertainmentstar.ui.ReviewViewModel;
 import com.fishinwater.fiwentertainmentstar.ui.activity.ReviewActivity;
 import com.fishinwater.fiwentertainmentstar.ui.activity.WebActivity;
 import com.fishinwater.fiwentertainmentstar.utils.Dater;
@@ -47,11 +48,14 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     private List<Review> mList;
 
-    private Activity context;
+    private Activity mContext;
 
-    public ReviewAdapter(List<Review> mList, Activity context){
+    private ReviewViewModel mReviewViewModel;
+
+    public ReviewAdapter(List<Review> mList, Activity mContext, ReviewViewModel mReviewViewModel){
         this.mList   = mList;
-        this.context = context;
+        this.mContext = mContext;
+        this.mReviewViewModel = mReviewViewModel;
     }
 
     @NonNull
@@ -72,7 +76,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WebActivity.actionStart(context, v, review.getArticle());
+                WebActivity.actionStart(mContext, v, review.getArticle());
             }
         });
         viewHolder.itemView.setOnTouchListener(new View.OnTouchListener() {
@@ -108,20 +112,31 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         mPopupWindow.showAtLocation(anchorView, Gravity.TOP | Gravity.START, windowPos[0], windowPos[1]);
     }
 
-    private View getPopupWindowContentView(final Review plan) {
+    /**
+     * item 弹出框
+     *
+     * 长按弹出，选择功能
+     * 视频、修改、删除
+     * @param review
+     * @return
+     */
+    private View getPopupWindowContentView(final Review review) {
         // 一个自定义的布局，作为显示的内容
         // 布局ID
         int layoutId = R.layout.popup_content_layout;
-        View contentView = LayoutInflater.from(context).inflate(layoutId, null);
+        View contentView = LayoutInflater.from(mContext).inflate(layoutId, null);
         View.OnClickListener menuItemOnClickListener = v-> {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.menu_item1:
-                    showDeleteDialog(plan);
+                    showDeleteDialog(review);
                     break;
                 case R.id.menu_item2:
-                    Uri uri = Uri.parse(plan.getMovie());
+                    Uri uri = Uri.parse(review.getMovie());
                     Intent mWebIntent = new Intent(Intent.ACTION_VIEW, uri);
-                    context.startActivity(mWebIntent);
+                    mContext.startActivity(mWebIntent);
+                    break;
+                case R.id.menu_item3:
+                    UpdateReviewDialog.build(mContext, review, mReviewViewModel);
                     break;
 
                 default:
@@ -132,6 +147,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         };
         contentView.findViewById(R.id.menu_item1).setOnClickListener(menuItemOnClickListener);
         contentView.findViewById(R.id.menu_item2).setOnClickListener(menuItemOnClickListener);
+        contentView.findViewById(R.id.menu_item3).setOnClickListener(menuItemOnClickListener);
         return contentView;
     }
 
@@ -143,13 +159,13 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
      */
     private void showDeleteDialog(final Review plan){
         final AlertDialog.Builder normalDialog =
-                new AlertDialog.Builder(context);
+                new AlertDialog.Builder(mContext);
         normalDialog.setIcon(R.mipmap.app_icon);
         normalDialog.setTitle("提示");
         normalDialog.setMessage("你确定要删除本计划?");
         normalDialog.setPositiveButton("确定",
                 (dialog, which) -> {
-                    ((ReviewActivity) context).removeDBPlan(plan);
+                    ((ReviewActivity) mContext).removeDBPlan(plan);
                 });
         normalDialog.setNegativeButton("关闭",
                 (dialog, which) -> {

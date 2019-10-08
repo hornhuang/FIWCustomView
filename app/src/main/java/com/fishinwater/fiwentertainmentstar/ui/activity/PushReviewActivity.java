@@ -93,12 +93,10 @@ public class PushReviewActivity extends AppCompatActivity {
         // 实例化 ViewModelFactory 对象，准备实例化 ViewModel
         mViewModelFactory = Injection.provideViewModelFactory(this);
         mViewModel = new ViewModelProvider(this, mViewModelFactory).get(ReviewViewModel.class);
-        mPushBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mPushBtn.setOnClickListener( v -> {
                 pushPlan();
             }
-        });
+        );
     }
 
     @Override

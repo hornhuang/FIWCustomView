@@ -84,9 +84,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
-    compile "androidx.core:core-ktx:+"
-    compile "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    implementation "androidx.core:core-ktx:+"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()

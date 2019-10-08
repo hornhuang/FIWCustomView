@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="content_padding">5dp</dimen>
+
+    <!--    复习列表长按弹出框-->
+    <dimen name="pop_window_width">100dp</dimen>
+    <dimen name="pop_window_height">50dp</dimen>
+
+    <!--    Review 信息修改对话框-->
+    <dimen name="info_change_margin">50dp</dimen>
+    <dimen name="info_change_interval">10dp</dimen>
+    <dimen name="info_change_font_size">20sp</dimen>
+    <dimen name="info_change_prompt_size">13sp</dimen>
+
+</resources>

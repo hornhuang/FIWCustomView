@@ -2,6 +2,11 @@ package com.fishinwater.fiwentertainmentstar.utils;
 
 import com.fishinwater.fiwentertainmentstar.R;
 
+/**
+ * 资源图库
+ *
+ * @author fishinwater-1999
+ */
 public class LocalPicture {
 
     public static int[] girl = new int[]{
