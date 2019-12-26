@@ -1,4 +1,4 @@
-package com.fishinwater.fiwentertainmentstar;
+package com.fishinwater.java_test;
 
 import org.junit.Test;
 
