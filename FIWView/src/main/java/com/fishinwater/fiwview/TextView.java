@@ -63,10 +63,6 @@ public class TextView extends View {
         } else if (widthMode == MeasureSpec.UNSPECIFIED) { // 尽可能的大 （很少用到，一般在 ScrollView ListView 里）
 
         }
-
-
     }
-
-
 
 }
