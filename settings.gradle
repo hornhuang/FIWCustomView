@@ -1,2 +1,2 @@
-include ':app'
-rootProject.name='FIWEntertainmentStar'
+include ':app', ':BaseLibrary', 'FIWView'
+rootProject.name='FIWCustomView'
