@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fishinwater.fiwentertainmentstar">
+    package="com.fishinwater.java_test">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -13,12 +13,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated ="true">
-
-        <activity android:name=".ui.activity.WebActivity"
-            android:hardwareAccelerated="true"
-            android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name=".ui.activity.PushReviewActivity" />
-        <activity android:name=".ui.activity.ReviewActivity">
+        <activity android:name="com.fishinwater.java_test.ReviewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 <!--                使 Google 能够抓取我的应用内容并允许用户从搜索结果中进入我的应用，从而解决 MainFest 报错-->

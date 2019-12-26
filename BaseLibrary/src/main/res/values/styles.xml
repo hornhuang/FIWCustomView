@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowExitTransition">@transition/fade</item>
+        <item name="android:windowEnterAnimation">@transition/fade</item>
+        <item name="android:windowReenterTransition">@transition/fade</item>
+    </style>
+
+    <!--
+    I expected android:colorBackground to be what I was looking for but
+    it seems you have to override android:background
+    -->
+    <style name="Dark.Overlay" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Dark.Overlay.LightPopup" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+</resources>
