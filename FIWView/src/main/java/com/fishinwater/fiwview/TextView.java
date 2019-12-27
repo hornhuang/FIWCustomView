@@ -3,6 +3,7 @@ package com.fishinwater.fiwview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -16,6 +17,8 @@ public class TextView extends View {
     private String mText;
     private int mTextSize = 15;
     private int mTextColor = Color.BLACK;// 默认黑色
+
+    private Paint mPaint;
 
     /**
      * 这个函数会在代码中 new 是调用
@@ -41,6 +44,19 @@ public class TextView extends View {
      * @param attrs
      * @param defStyleAttr
      */
+    public TextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+
+        // 获取自定义属性
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.TextView);
+
+        mText = array.getString(R.styleable.TextView_text);
+
+        array.recycle();
+
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+    }
 
 
     /**
