@@ -1,0 +1,20 @@
+ext {
+
+    android = [
+            applicationId : "com.fishinwater.fiwentertainmentstar",
+            minSdkVersion : 24,
+            targetSdkVersion : 29,
+            versionCode : 1,
+            versionName : "1.0",
+            testInstrumentationRunner : "androidx.test.runner.AndroidJUnitRunner",
+            compileSdkVersion : 29,
+            buildToolsVersion : "29.0.2"
+    ]
+
+    appId = [
+            "app" : "com.fishinwater.fiwentertainmentstar",
+            "base" : "",
+            "view" : ""
+    ]
+
+}

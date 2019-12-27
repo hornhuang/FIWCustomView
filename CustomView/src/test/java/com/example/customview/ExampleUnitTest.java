@@ -1,4 +1,4 @@
-package com.fishinwater.fiwview;
+package com.example.customview;
 
 import org.junit.Test;
 

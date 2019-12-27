@@ -1,2 +1,2 @@
-include ':app', ':BaseLibrary', 'FIWView'
+include ':app', ':BaseLibrary', ':CustomView'
 rootProject.name='FIWCustomView'

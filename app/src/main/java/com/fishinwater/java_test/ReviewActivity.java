@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.fishinwater.fiwview.TextView;
+import com.example.customview.FIWTextView;
 
 
 /**
