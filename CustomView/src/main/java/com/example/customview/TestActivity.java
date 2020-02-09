@@ -22,6 +22,7 @@ public class TestActivity extends AppCompatActivity implements SensorEventListen
     public final String TAG = getClass().getName();
     private int mCurrentStep = 8000;
 
+
     private SensorManager manager;
     private Sensor stepSensor;
 
