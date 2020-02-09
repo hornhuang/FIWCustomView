@@ -6,7 +6,7 @@ def cfg   = rootProject.ext.android
 def appId = rootProject.ext.android
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion cfg.targetSdkVersion
     defaultConfig {
         applicationId appId["app"]
         minSdkVersion cfg.minSdkVersion
