@@ -18,7 +18,10 @@ public class FIWTextView extends View {
 
     private String mText;
     private int mTextSize = 15;
-    private int mTextColor = Color.BLACK;// 默认黑色
+    /**
+     * 默认黑色
+     */
+    private int mTextColor = Color.BLACK;
 
     private Paint mPaint;
 
