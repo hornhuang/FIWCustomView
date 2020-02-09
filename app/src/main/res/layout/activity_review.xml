@@ -13,4 +13,11 @@
         app:fiw_text="YuanHao"
         app:fiw_textColor="#00000000"/>
 
+    <com.example.customview.QQStepView
+        app:outerColor="@color/colorAccent"
+        app:innerColor="@color/colorAccent"
+        app:borderWidth="6dp"
+        android:layout_height="80dp"
+        android:layout_width="80dp" />
+
 </LinearLayout>
