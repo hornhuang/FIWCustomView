@@ -2,15 +2,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
+def cfg   = rootProject.ext.android
+def appId = rootProject.ext.android
+
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.fishinwater.fiwentertainmentstar"
-        minSdkVersion 24
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId appId["app"]
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+        testInstrumentationRunner cfg.testInstrumentationRunner
     }
     buildTypes {
         release {
@@ -32,9 +35,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation project(path: ':FIWView')
     implementation project(path: ':BaseLibrary')
-    // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.10'
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    implementation project(path: ':CustomView')
 }

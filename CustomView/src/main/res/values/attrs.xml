@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextView">
+        <attr name="fiw_text" format="string" />
+        <attr name="fiw_textColor" format="color" />
+        <attr name="fiw_textSize" format="dimension" />
+        <attr name="fiw_inputType" >
+            <enum name="fiw_number" value="1" />
+            <enum name="fiw_text" value="2" />
+            <enum name="fiw_password" value="3" />
+        </attr>
+    </declare-styleable>
+</resources>
