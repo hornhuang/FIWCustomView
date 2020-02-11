@@ -7,20 +7,27 @@
     android:orientation="vertical"
     tools:context=".TestActivity">
 
-<!--    <com.example.customview.FIWTextView-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:fiw_text="YuanHao"-->
-<!--        app:fiw_textColor="#00000000"/>-->
+    <!--    <com.example.customview.FIWTextView-->
+    <!--        android:layout_width="100dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:fiw_text="YuanHao"-->
+    <!--        app:fiw_textColor="#00000000"/>-->
 
-    <com.example.customview.QQStepView
-        android:id="@+id/step_view"
-        app:outerColor="#ff0"
-        app:innerColor="#0f0"
-        app:borderWidth="20dp"
-        app:stepTextColor="#0f0"
-        app:stepTextSize="75sp"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" />
+<!--        <com.example.customview.QQStepView-->
+<!--            android:id="@+id/step_view"-->
+<!--            app:outerColor="#ff0"-->
+<!--            app:innerColor="#0f0"-->
+<!--            app:borderWidth="20dp"-->
+<!--            app:stepTextColor="#0f0"-->
+<!--            app:stepTextSize="75sp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_width="match_parent" />-->
+
+    <com.example.customview.ColorTrackTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        app:change_color="#0ff"
+        app:origin_color="#000"/>
 
 </LinearLayout>
