@@ -7,17 +7,14 @@
     android:orientation="vertical"
     android:id="@+id/refresh">
 
-    <com.example.customview.FIWTextView
-        android:layout_width="100dp"
+    <com.fishinwater.java_test.FIWStepView
+        android:id="@+id/step_view"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:fiw_text="YuanHao"
-        app:fiw_textColor="#00000000"/>
-
-    <com.example.customview.QQStepView
-        app:outerColor="@color/colorAccent"
-        app:innerColor="@color/colorAccent"
-        app:borderWidth="6dp"
-        android:layout_height="80dp"
-        android:layout_width="80dp" />
+        app:border_width="30dp"
+        app:outer_color="@color/yellow"
+        app:inner_color="@color/blueviolet"
+        app:step_text_color="@color/blueviolet"
+        app:step_text_size="60sp"/>
 
 </LinearLayout>
