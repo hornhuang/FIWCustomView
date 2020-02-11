@@ -41,20 +41,22 @@ public class ColorTrackTextView extends AppCompatTextView {
 
     public ColorTrackTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        iniPaint(context, attrs);
+        initPaint(context, attrs);
     }
 
     /**
-     * 初始化画笔
-     * @param context 构造方法的 context
-     * @param attrs 构造方法的 attrs
+     * 1.1 初始化画笔
      */
-    private void iniPaint(Context context, @Nullable AttributeSet attrs) {
+    private void initPaint(Context context, AttributeSet attrs) {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ColorTrackTextView);
-        int originColor = array.getColor(R.styleable.ColorTrackTextView_origin_color, Color.GRAY);
-        int changeColor = array.getColor(R.styleable.ColorTrackTextView_change_color, Color.RED);
-        mOriginPaint = new Paint(originColor);
-        mChangePaint = new Paint(changeColor);
+
+        int originColor = array.getColor(R.styleable.ColorTrackTextView_origin_color, getTextColors().getDefaultColor());
+        int changeColor = array.getColor(R.styleable.ColorTrackTextView_change_color, getTextColors().getDefaultColor());
+
+        mOriginPaint = getPaintByColor(originColor);
+        mChangePaint = getPaintByColor(changeColor);
+
+        // 回收
         array.recycle();
     }
 
