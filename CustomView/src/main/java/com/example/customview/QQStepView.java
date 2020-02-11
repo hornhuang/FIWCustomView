@@ -62,6 +62,7 @@ public class QQStepView extends View {
         mStepTextColor = array.getColor(R.styleable.QQStepView_stepTextColor, mStepTextColor);
         array.recycle();
 
+
         mOutPaint = new Paint();
         mOutPaint.setAntiAlias(true);
         mOutPaint.setStrokeWidth(mBorderWidth);
@@ -71,6 +72,7 @@ public class QQStepView extends View {
         // 画笔实心
         // 解决 边缘卡没了 描边有宽度
         mOutPaint.setStyle(Paint.Style.STROKE);
+
 
 
         mInnerPaint = new Paint();
@@ -129,8 +131,8 @@ public class QQStepView extends View {
         int dx = getWidth()/2 - textBounds.width()/2;
         // 基线
         Paint.FontMetricsInt fontMetricsInt = mTextPaint.getFontMetricsInt();
-        int dy = fontMetricsInt.bottom - fontMetricsInt.top;
-        int  baseLine = getHeight()/2 + dy/2;
+        int dy = (fontMetricsInt.bottom - fontMetricsInt.top)/2 - fontMetricsInt.bottom;
+        int baseLine = getHeight()/2 + dy;
         canvas.drawText(stepText, dx, baseLine, mTextPaint);
     }
 
