@@ -25,7 +25,7 @@
 
     <com.example.customview.ColorTrackTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:text="Hello World"
         app:change_color="#0ff"
         app:origin_color="#000"/>
