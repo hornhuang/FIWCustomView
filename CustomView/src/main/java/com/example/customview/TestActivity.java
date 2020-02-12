@@ -10,6 +10,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 
@@ -17,12 +18,14 @@ import java.util.List;
 
 public class TestActivity extends AppCompatActivity {
 
-    private QQStepView stepView;
+    private ColorTrackTextView colorTrackTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
+        colorTrackTextView = findViewById(R.id.color_track_text_view);
 
 //        stepView = findViewById(R.id.step_view);
 //        stepView.setmStepMax(10000);
@@ -39,6 +42,13 @@ public class TestActivity extends AppCompatActivity {
 //            }
 //        });
 //        valueAnimator.start();
+    }
+
+    public void leftToRight(View view) {
+        ValueAnimator valueAnimator = ObjectAnimator.ofFloat(0, 1);
+        valueAnimator.setDuration(2000);
+        valueAnimator.addUpdateListener((animation) -> {});
+        valueAnimator.start();
     }
 
 }
