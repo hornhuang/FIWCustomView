@@ -1,4 +1,4 @@
-package com.example.customview;
+package com.example.customview.view_3;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
+
+import com.example.customview.R;
 
 /**
  * @author fishinwater-1999
@@ -92,11 +94,11 @@ public class ColorTrackTextView extends AppCompatTextView {
         int middle = (int) (mCurrentProgress * getWidth());
 
         if (mDirection == Direction.LEFT_TO_RIGHT) {
-            drawText(canvas, mOriginPaint, 0, middle);
-            drawText(canvas, mChangePaint, middle, getWidth());
+            drawText(canvas, mChangePaint, 0, middle);
+            drawText(canvas, mOriginPaint, middle, getWidth());
         } else {
-            drawText(canvas, mOriginPaint, getWidth() - middle, getWidth());
-            drawText(canvas, mChangePaint, 0, getWidth() - middle);
+            drawText(canvas, mChangePaint, getWidth() - middle, getWidth());
+            drawText(canvas, mOriginPaint, 0, getWidth() - middle);
         }
     }
 
@@ -132,5 +134,6 @@ public class ColorTrackTextView extends AppCompatTextView {
 
     public void setCurrentProgress(float mCurrentProgress) {
         this.mCurrentProgress = mCurrentProgress;
+        invalidate();
     }
 }
