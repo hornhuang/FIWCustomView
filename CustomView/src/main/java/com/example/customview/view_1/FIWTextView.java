@@ -1,4 +1,4 @@
-package com.example.customview;
+package com.example.customview.view_1;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+
+import com.example.customview.R;
 
 /**
  * @author fishinwater-1999
