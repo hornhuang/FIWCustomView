@@ -3,7 +3,8 @@
     package="com.example.customview">
 
     <application>
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".view_3.ViewPagerActivity"></activity>
+        <activity android:name=".TestActivity" />
     </application>
 
 </manifest>
