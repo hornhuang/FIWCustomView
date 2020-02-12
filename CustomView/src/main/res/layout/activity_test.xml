@@ -24,10 +24,23 @@
 <!--            android:layout_width="match_parent" />-->
 
     <com.example.customview.ColorTrackTextView
+        android:id="@+id/color_track_text_view"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:text="Hello World"
         app:change_color="#0ff"
         app:origin_color="#000"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="右到左"
+        android:onClick="rightToLeft"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="左到右"
+        android:onClick="leftToRight"/>
 
 </LinearLayout>
