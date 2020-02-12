@@ -1,4 +1,4 @@
-package com.example.customview;
+package com.example.customview.view_2;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+
+import com.example.customview.R;
 
 /**
  * 自定义 View 要点，先写思路，在写 Demo
