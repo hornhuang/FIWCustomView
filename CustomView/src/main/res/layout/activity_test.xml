@@ -7,13 +7,13 @@
     android:orientation="vertical"
     tools:context=".TestActivity">
 
-    <!--    <com.example.customview.FIWTextView-->
+    <!--    <com.example.customview.view_1.FIWTextView-->
     <!--        android:layout_width="100dp"-->
     <!--        android:layout_height="wrap_content"-->
     <!--        app:fiw_text="YuanHao"-->
     <!--        app:fiw_textColor="#00000000"/>-->
 
-<!--        <com.example.customview.QQStepView-->
+<!--        <com.example.customview.view_2.QQStepView-->
 <!--            android:id="@+id/step_view"-->
 <!--            app:outerColor="#ff0"-->
 <!--            app:innerColor="#0f0"-->
@@ -23,7 +23,7 @@
 <!--            android:layout_height="match_parent"-->
 <!--            android:layout_width="match_parent" />-->
 
-    <com.example.customview.ColorTrackTextView
+    <com.example.customview.view_3.ColorTrackTextView
         android:id="@+id/color_track_text_view"
         android:layout_width="match_parent"
         android:layout_height="100dp"
